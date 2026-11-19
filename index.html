@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KIN CERAMICS (긴세라믹스) — Pohang Ceramic Studio</title>
+  <!-- Google Fonts: Inter & Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kiln: '#141414',
+            kilnHover: '#2E2E2E',
+            clay: '#F5F5F3',
+            sea: '#1E6473',
+            seaHover: '#154B57',
+            mist: '#EDF4F6',
+            canvas: '#FFFFFF',
+            surface: '#F9F9F8',
+            stone: '#767676',
+            hairline: '#E6E6E4',
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+          },
+          borderRadius: {
+            none: '0px',
+          },
+          maxWidth: {
+            gallery: '1360px',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --color-primary: #141414;
+      --color-primary-hover: #2E2E2E;
+      --color-secondary: #F5F5F3;
+      --color-accent-sea: #1E6473;
+      --color-accent-sea-hover: #154B57;
+      --color-accent-soft: #EDF4F6;
+      --color-bg-main: #FFFFFF;
+      --color-bg-surface: #F9F9F8;
+      --color-text-main: #141414;
+      --color-text-muted: #767676;
+      --color-border: #E6E6E4;
+      --radius-none: 0px;
+      --border-hairline: 1px solid #E6E6E4;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      background-color: var(--color-bg-main);
+      color: var(--color-text-main);
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--color-bg-main);
+      color: var(--color-text-main);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* Strictly 0px radius and no drop shadows across all elements */
+    *, *::before, *::after {
+      border-radius: 0px !important;
+      box-shadow: none !important;
+    }
+
+    .nav-link {
+      position: relative;
+      letter-spacing: 0.22em;
+      font-size: 11px;
+      font-weight: 400;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link.active::after,
+    .nav-link:hover::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 1px;
+      background-color: #1E6473;
+    }
+
+    .btn-primary-editorial {
+      background-color: #141414;
+      color: #FFFFFF;
+      border: 1px solid #141414;
+      letter-spacing: 0.18em;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-primary-editorial:hover {
+      background-color: #2E2E2E;
+      border-color: #2E2E2E;
+    }
+
+    .btn-secondary-editorial {
+      background-color: #FFFFFF;
+      color: #141414;
+      border: 1px solid #141414;
+      letter-spacing: 0.18em;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-secondary-editorial:hover {
+      background-color: #141414;
+      color: #FFFFFF;
+    }
+
+    .btn-sea-editorial {
+      background-color: #1E6473;
+      color: #FFFFFF;
+      border: 1px solid #1E6473;
+      letter-spacing: 0.18em;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-sea-editorial:hover {
+      background-color: #154B57;
+      border-color: #154B57;
+    }
+
+    .artwork-frame img {
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .artwork-card:hover .artwork-frame img {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body class="bg-canvas text-kiln antialiased selection:bg-mist selection:text-sea">
+
+  <!-- Top Notice Strip (Sea Mist Tint) -->
+  <div class="w-full bg-mist border-b border-hairline">
+    <div class="max-w-gallery mx-auto px-5 sm:px-8 md:px-10 py-2.5 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] tracking-[0.16em] text-kiln">
+      <span>POHANG HEUNGHAE STUDIO · 도자기 수업 및 모래시계 컵 에디션 안내</span>
+      <a href="#pohang-class" class="text-sea font-normal underline underline-offset-4 hover:text-seaHover">
+        클래스 &amp; 방문 예약 보기
+      </a>
+    </div>
+  </div>
+
+  <!-- Single-Row Editorial Header -->
+  <header class="sticky top-0 z-40 w-full bg-canvas/95 backdrop-blur-xs border-b border-hairline">
+    <div class="max-w-gallery mx-auto px-5 sm:px-8 md:px-10 h-16 md:h-20 flex items-center justify-between">
+      <!-- Brand Wordmark -->
+      <a href="#top" class="flex flex-col justify-center group" aria-label="KIN CERAMICS 홈">
+        <span class="text-[13px] md:text-[14px] font-normal tracking-[0.28em] text-kiln uppercase">
+          KIN CERAMICS
+        </span>
+        <span class="text-[10px] tracking-[0.16em] text-stone mt-0.5">
+          긴세라믹스
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="주요 메뉴" class="hidden md:flex items-center gap-8">
+        <a href="#shop" data-nav="shop" class="nav-link active text-kiln uppercase">SHOP</a>
+        <a href="#about" data-nav="about" class="nav-link text-stone hover:text-kiln uppercase">ABOUT</a>
+        <a href="#pohang-class" data-nav="pohang" class="nav-link text-stone hover:text-kiln uppercase">POHANG</a>
+        <a href="#contact" data-nav="contact" class="nav-link text-stone hover:text-kiln uppercase">CONTACT</a>
+        <button type="button" id="openCartBtnDesktop" data-nav="cart" class="nav-link text-kiln uppercase cursor-pointer">
+          CART (<span id="cartCountDesktop">0</span>)
+        </button>
+      </nav>
+
+      <!-- Mobile Quick Actions -->
+      <div class="flex md:hidden items-center gap-4">
+        <button type="button" id="openCartBtnMobile" class="text-[11px] tracking-[0.2em] text-kiln uppercase py-2 px-1">
+          CART (<span id="cartCountMobile">0</span>)
+        </button>
+        <button type="button" id="mobileMenuToggle" aria-label="메뉴 열기" aria-expanded="false" class="p-2 border border-hairline text-kiln">
+          <svg id="menuIconOpen" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 24 24">
+            <path stroke-linecap="square" d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+          <svg id="menuIconClose" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 24 24">
+            <path stroke-linecap="square" d="M6 6l12 12M18 6L6 18"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileDrawer" class="hidden md:hidden border-t border-hairline bg-canvas">
+      <div class="px-5 py-6 flex flex-col gap-5 text-[12px] tracking-[0.22em] uppercase">
+        <a href="#shop" class="mobile-nav-link text-kiln py-1">SHOP · 대표 작품</a>
+        <a href="#about" class="mobile-nav-link text-kiln py-1">ABOUT · 브랜드 소개</a>
+        <a href="#pohang-class" class="mobile-nav-link text-kiln py-1">POHANG · 도자기 수업 &amp; 공방</a>
+        <a href="#contact" class="mobile-nav-link text-kiln py-1">CONTACT · 문의 및 오시는 길</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero Editorial Section -->
+    <section class="w-full border-b border-hairline">
+      <div class="max-w-gallery mx-auto px-5 sm:px-8 md:px-10 py-12 md:py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end">
+          <!-- Left Editorial Statement -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-block border border-sea text-sea px-3 py-1 text-[11px] tracking-[0.2em] uppercase">
+              POHANG STUDIO · ARCHIVE 01
+            </div>
+            <h1 class="text-[32px] sm:text-[38px] lg:text-[44px] font-light leading-[1.25] tracking-[-0.02em] text-kiln">
+              긴 시간 고민하고,<br />
+              긴 시간 곁에 머무는 도자기를 만듭니다.
+            </h1>
+            <p class="text-[15px] font-light leading-[1.9] tracking-[-0.01em] text-stone max-w-xl">
+              포항 북구 흥해의 고요한 작업실에서 흙의 물성과 손의 호흡을 오래 살핍니다.
+              단정한 비례의 <strong class="font-normal text-kiln">모래시계 컵</strong>과 차분한 호흡으로 빚는
+              <strong class="font-normal text-kiln">도자기 수업</strong>을 통해 일상의 속도를 조율합니다.
+            </p>
+            <div class="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
+              <a href="#shop" class="btn-primary-editorial inline-flex items-center justify-center px-6 py-3.5 text-[11px] uppercase">
+                작품 아카이브 보기
+              </a>
+              <a href="#pohang-class" class="btn-sea-editorial inline-flex items-center justify-center px-6 py-3.5 text-[11px] uppercase">
+                도자기 수업 및 방문 예약
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Exhibition Metadata -->
+          <div class="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-hairline pt-6 lg:pt-0 lg:pl-10 space-y-5">
+            <div class="flex justify-between items-baseline border-b border-hairline pb-3">
+              <span class="text-[11px] tracking-[0.2em] text-stone uppercase">STUDIO</span>
+              <span class="text-[13px] font-normal text-kiln">포항 북구 흥해 1F 긴세라믹스</span>
+            </div>
+            <div class="flex justify-between items-baseline border-b border-hairline pb-3">
+              <span class="text-[11px] tracking-[0.2em] text-stone uppercase">SIGNATURE</span>
+              <span class="text-[13px] font-normal text-kiln">모래시계 컵 · 도자기 수업</span>
+            </div>
+            <div class="flex justify-between items-baseline pb-1">
+              <span class="text-[11px] tracking-[0.2em] text-stone uppercase">KILN &amp; CLAY</span>
+              <span class="text-[13px] font-normal text-kiln">1,250°C 산화·환원 소성 · 백토·청자토</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Studio Exhibition Frame -->
+        <div class="mt-10 md:mt-14 bg-surface border border-hairline p-4 sm:p-8 md:p-12">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
+            <div class="md:col-span-8 bg-clay border border-hairline aspect-[16/10] overflow-hidden relative">
+              <img
+                src="https://placehold.co/1200x750/F5F5F3/141414?text=KIN+CERAMICS+%7C+HOURGLASS+CUP+%26+POHANG+STUDIO"
+                onerror="this.onerror=null;this.src='https://placehold.co/1200x750/F9F9F8/767676?text=kinceramics+Studio';"
+                alt="긴세라믹스 모래시계 컵과 포항 흥해 작업실 전경"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="md:col-span-4 flex flex-col justify-between space-y-6">
+              <div class="space-y-3">
+                <span class="inline-block bg-mist text-sea px-2.5 py-1 text-[11px] tracking-[0.18em] uppercase">
+                  FEATURED EDITION
+                </span>
+                <h2 class="text-[22px] sm:text-[26px] font-normal leading-[1.35] tracking-[-0.015em] text-kiln">
+                  모래시계 컵 (Hourglass Cup)
+                </h2>
+                <p class="text-[15px] font-light leading-[1.9] tracking-[-0.01em] text-stone">
+                  잘록한 허리선이 손끝에 자연스럽게 감기는 실루엣. 물과 차, 그리고 머무는 시간을 담는 긴세라믹스의 대표 기물입니다.
+                </p>
+              </div>
+              <div class="border-t border-hairline pt-4 flex items-center justify-between">
+                <div>
+                  <span class="block text-[11px] tracking-[0.18em] text-stone uppercase">SPECIFICATION</span>
+                  <span class="text-[13px] text-kiln">Ø 78 × H 104 mm · 1,250°C</span>
+                </div>
+                <span class="text-[16px] font-normal text-kiln">₩ 48,000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOP & ARCHIVE SECTION (3-Column Grid on Desktop, 2-Column on Tablet, 1-Column on Mobile) -->
+    <section id="shop" class="w-full border-b border-hairline">
+      <div class="max-w-gallery mx-auto px-5 sm:px-8 md:px-10 py-16 md:py-24">
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-hairline">
+          <div class="space-y-2">
+            <span class="text-[11px] tracking-[0.24em] text-stone uppercase">01 · WORKS &amp; CLASSES</span>
+            <h2 class="text-[28px] font-normal leading-[1.35] tracking-[-0.015em] text-kiln">
+              대표 작품 및 도자기 수업
+            </h2>
+          </div>
+
+          <!-- Filter Tabs -->
+          <div id="categoryFilters" class="flex flex-wrap items-center gap-2" role="group" aria-label="작품 및 수업 분류">
+            <button type="button" data-filter="ALL" class="filter-btn btn-primary-editorial px-4 py-2.5 text-[11px] uppercase cursor-pointer">
+              ALL (6)
+            </button>
+            <button type="button" data-filter="CUP" class="filter-btn btn-secondary-editorial px-4 py-2.5 text-[11px] uppercase cursor-pointer">
+              모래시계 컵
+            </button>
+            <button type="button" data-filter="CLASS" class="filter-btn btn-secondary-editorial px-4 py-2.5 text-[11px] uppercase cursor-pointer">
+              도자기 수업
+            </button>
+          </div>
+        </div>
+
+        <!-- 3-Column Archive Grid -->
+        <div id="catalogGrid" class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+          <!-- Populated dynamically via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT BRAND SECTION -->
+    <section id="about" class="w-full border-b border-hairline bg-surface">
+      <div class="max-w-gallery mx-auto px-5 sm:px-8 md:px-10 py-16 md:py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div class="lg:col-span-4 space-y-3">
+            <span class="text-[11px] tracking-[0.24em] text-stone uppercase">02 · ABOUT KIN CERAMICS</span>
+            <h2 class="text-[28px] font-normal leading-[1.35] tracking-[-0.015em] text-kiln">
+              오래 곁에 두는 기물의 태도
+            </h2>
+          </div>
+
+          <div class="lg:col-span-8 space-y-6">
+            <blockquote class="text-[20px] sm:text-[24px] font-light leading-[1.55] tracking-[-0.015em] text-kiln border-l-2 border-sea pl-5 py-1">
+              “긴 시간 고민하고, 긴 시간 곁에 머무는 도자기를 만듭니다.”
+            </blockquote>
+
+            <p class="text-[15px] font-light leading-[1.9] tracking-[-0.01em] text-kiln">
+              긴세라믹스(kinceramics)는 유행의 속도를 쫓기보다 흙이 지닌 본연의 질감과 손이 닿을 때의 균형감을 먼저 생각합니다.
+              눈으로 보는 장식보다 손으로 쥐었을 때의 안정감, 매일 꺼내 써도 질리지 않는 단정한 선을 추구합니다.
+            </p>
+
+            <p class="text-[15px] font-light leading-[1.9] tracking-[-0.01em] text-stone">
+              포항 북구 흥해 작업실에서는 소량 제작되는 모래시계 컵과 생활 도자기를 선보이는 동시에,
+              초보자도 차분히 흙을 만지며 자신만의 그릇을 빚을 수 있는 소규모 도자기 수업을 운영합니다.
+            </p>
+
+            <!-- 3 Quiet Principles -->
+            <div class="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-hairline">
+              <div class="space-y-1.5">
+                <span class="text-[11px] tracking-[0.2em] text-sea uppercase">01 · PROPORTION</span>
+                <h3 class="text-[18px] font-medium text-kiln">모래시계 실루엣</h3>
+                <p class="text-[13px] font-light leading-[1.8] text-stone">
+                  허리 곡선으로 손에 감기는 그립과 입술에 닿는 얇고 정돈된 구연을 설계합니다.
+                </p>
+              </div>
+              <div class="space-y-1.5">
+                <span class="text-[11px] tracking-[0.2em] text-sea uppercase">02 · MATERIAL</span>
+                <h3 class="text-[18px] font-medium text-kiln">절제된 표면</h3>
+                <p class="text-[13px] font-light leading-[1.8] text-stone">
+                  과한 문양을 덜어내고 흙의 입자와 유약의 미세한 결이 드러나도록 소성합니다.
+                </p>
+              </div>
+              <div class="space-y-1.5">
+                <span class="text-[11px] tracking-[0.2em] text-sea uppercase">03 · STILLNESS</span>
+                <h3 class="text-[18px] font-medium text-kiln">여백의 수업</h3>
+                <p class="text-[13px] font-light leading-[1.8] text-stone">
+                  소수 인원으로 진행되는 도자기 클래스에서 서두르지 않고 흙과 마주하는 시간을 나눕니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POHANG STUDIO & CERAMIC CLASS RESERVATION SECTION -->
+    <section id="pohang-class" class="w-full border-b border-hairline">
+      <div class="max-w-gallery mx-auto px-5 sm:px-8 md:px-10 py-16 md:py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+          <!-- Left Studio & Class Overview -->
+          <div class="lg:col-span-6 space-y-6">
+            <div class="space-y-2">
+              <span class="text-[11px] tracking-[0.24em] text-sea uppercase">03 · POHANG HEUNGHAE STUDIO</span>
+              <h2 class="text-[28px] font-normal leading-[1.35] tracking-[-0.015em] text-kiln">
+                포항 흥해 공방 &amp; 도자기 수업 예약
+              </h2>
+            </div>
+
+            <p class="text-[15px] font-light leading-[1.9] tracking-[-0.01em] text-stone">
+              포항 북구 흥해 1F에 자리한 긴세라믹스 작업실은 도자기 제작과 수업이 함께 이루어지는 공간입니다.
+              원데이 클래스, 4주 정규 과정, 또는 모래시계 컵 직접 빚기 및 공방 방문 일정을 남겨주시면 순차적으로 안내해 드립니다.
+            </p>
+
+            <div class="bg-clay border border-hairline p-6 space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-hairline pb-3">
+                <span class="text-[11px] tracking-[0.2em] text-stone uppercase">WORKSHOP ADDRESS</span>
+                <span class="text-[14px] font-normal text-kiln">포항 북구 흥해 1F 긴세라믹스</span>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-hairline pb-3">
+                <span class="text-[11px] tracking-[0.2em] text-stone uppercase">CLASS FORMAT</span>
+                <span class="text-[14px] font-normal text-kiln">원데이 모래시계 컵 · 4주 기초 클래스</span>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <span class="text-[11px] tracking-[0.2em] text-stone uppercase">STUDIO CAPACITY</span>
+                <span class="text-[14px] font-normal text-kiln">회차별 최대 4명 소수 정원제</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Reservation Form -->
+          <div class="lg:col-span-6 bg-canvas border border-hairline p-6 sm:p-8">
+            <h3 class="text-[18px] font-medium text-kiln mb-1">수업 및 방문 예약 신청</h3>
+            <p class="text-[13px] font-light text-stone mb-6">
+              희망하는 프로그램과 날짜를 선택해 주세요. 확인 후 연락처로 상세 안내를 드립니다.
+            </p>
+
+            <form id="reservationForm" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="resName" class="block text-[11px] tracking-[0.18em] text-stone uppercase mb-1.5">
+                    이름 *
+                  </label>
+                  <input
+                    type="text"
+                    id="resName"
+                    required
+                    placeholder="홍길동"
+                    class="w-full bg-surface border border-hairline px-3.5 py-2.5 text-[14px] text-kiln focus:outline-none focus:border-kiln"
+                  />
+                </div>
+                <div>
+                  <label for="resPhone" class="block text-[11px] tracking-[0.18em] text-stone uppercase mb-1.5">
+                    연락처 *
+                  </label>
+                  <input
+                    type="tel"
+                    id="resPhone"
+                    required
+                    placeholder="010-0000-0000"
+                    class="w-full bg-surface border border-hairline px-3.5 py-2.5 text-[14px] text-kiln focus:outline-none focus:border-kiln"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="resProgram" class="block text-[11px] tracking-[0.18em] text-stone uppercase mb-1.5">
+                    선택 프로그램
+                  </label>
+                  <select
+                    id="resProgram"
+                    class="w-full bg-surface border border-hairline px-3.5 py-2.5 text-[14px] text-kiln focus:outline-none focus:border-kiln"
+                  >
+                    <option value="원데이 클래스 — 모래시계 컵 만들기">원데이 클래스 — 모래시계 컵 만들기</option>
+                    <option value="4주 정규 도자기 수업 — 물레·핸드빌딩">4주 정규 도자기 수업 — 물레·핸드빌딩</option>
+                    <option value="포항 흥해 공방 방문 및 작품 관람">포항 흥해 공방 방문 및 작품 관람</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="resDate" class="block text-[11px] tracking-[0.18em] text-stone uppercase mb-1.5">
+                    희망 일자 *
+                  </label>
+                  <input
+                    type="date"
+                    id="resDate"
+                    required
+                    class="w-full bg-surface border border-hairline px-3.5 py-2.5 text-[14px] text-kiln focus:outline-none focus:border-kiln"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="resNote" class="block text-[11px] tracking-[0.18em] text-stone uppercase mb-1.5">
+                  요청 사항 (인원, 시간대 등)
+                </label>
+                <textarea
+                  id="resNote"
+                  rows="3"
+                  placeholder="예: 2명 참여 희망, 오후 시간대 선호합니다."
+                  class="w-full bg-surface border border-hairline px-3.5 py-2.5 text-[14px] text-kiln focus:outline-none focus:border-kiln"
+                ></textarea>
+              </div>
+
+              <div id="reservationFeedback" class="hidden bg-mist border border-sea text-sea px-4 py-3 text-[13px]"></div>
+
+              <button type="submit" class="btn-sea-editorial w-full py-3.5 text-[11px] uppercase cursor-pointer">
+                포항 작업실 방문·수업 예약하기
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & STUDIO INFORMATION SECTION -->
+    <section id="contact" class="w-full bg-surface border-b border-hairline">
+      <div class="max-w-gallery mx-auto px-5 sm:px-8 md:px-10 py-16 md:py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="border-t border-hairline pt-5 space-y-2">
+            <span class="text-[11px] tracking-[0.22em] text-stone uppercase">04 · LOCATION</span>
+            <h3 class="text-[18px] font-medium text-kiln">사업장 및 오시는 길</h3>
+            <p class="text-[14px] font-light leading-[1.8] text-kiln">
+              포항 북구 흥해 1F 긴세라믹스
+            </p>
+            <p class="text-[12px] font-light text-stone">
+              사업자등록번호: 333-3333-33333
+            </p>
+          </div>
+
+          <div class="border-t border-hairline pt-5 space-y-2">
+            <span class="text-[11px] tracking-[0.22em] text-stone uppercase">PHONE &amp; EMAIL</span>
+            <h3 class="text-[18px] font-medium text-kiln">고객 문의 안내</h3>
+            <p class="text-[14px] font-light leading-[1.8] text-kiln">
+              전화: <a href="tel:01035983336" class="underline underline-offset-4 hover:text-sea">010.3598.3336</a>
+            </p>
+            <p class="text-[14px] font-light leading-[1.8] text-kiln">
+              이메일: <a href="mailto:kinceramics111@gmail.com" class="underline underline-offset-4 hover:text-sea">kinceramics111@gmail.com</a>
+            </p>
+          </div>
+
+          <div class="border-t border-hairline pt-5 space-y-3">
+            <span class="text-[11px] tracking-[0.22em] text-stone uppercase">STUDIO LETTER</span>
+            <h3 class="text-[18px] font-medium text-kiln">소식 받아보기</h3>
+            <p class="text-[13px] font-light leading-[1.7] text-stone">
+              새로운 모래시계 컵 소성과 도자기 수업 일정을 이메일로 전해드립니다.
+            </p>
+            <form id="newsletterForm" class="flex">
+              <input
+                type="email"
+                id="newsletterEmail"
+                required
+                placeholder="이메일 주소 입력"
+                class="flex-1 min-w-0 bg-canvas border border-hairline px-3 py-2 text-[13px] text-kiln focus:outline-none focus:border-kiln"
+              />
+              <button type="submit" class="btn-primary-editorial px-4 py-2 text-[11px] uppercase shrink-0 cursor-pointer">
+                구독
+              </button>
+            </form>
+            <p id="newsletterMsg" class="hidden text-[12px] text-sea"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Minimal Editorial Footer -->
+  <footer class="w-full bg-canvas py-10">
+    <div class="max-w-gallery mx-auto px-5 sm:px-8 md:px-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12px] text-stone">
+      <div class="space-y-1">
+        <p class="text-kiln font-normal tracking-[0.18em] uppercase">KIN CERAMICS (긴세라믹스)</p>
+        <p>포항 북구 흥해 1F 긴세라믹스 · 사업자등록번호 333-3333-33333</p>
+        <p>Tel. 010.3598.3336 · Mail. kinceramics111@gmail.com</p>
+      </div>
+      <div class="text-[11px] tracking-[0.14em] uppercase">
+        &copy; <span id="currentYear">2026</span> KIN CERAMICS. ALL RIGHTS RESERVED.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Over Cart Drawer -->
+  <div id="cartDrawerBackdrop" class="fixed inset-0 z-50 hidden bg-kiln/40" aria-hidden="true">
+    <aside class="fixed top-0 right-0 h-full w-full max-w-md bg-canvas border-l border-hairline flex flex-col justify-between">
+      <div class="p-6 border-b border-hairline flex items-center justify-between">
+        <div>
+          <span class="text-[10px] tracking-[0.22em] text-stone uppercase block">ARCHIVE BAG</span>
+          <h2 class="text-[18px] font-medium text-kiln">선택한 작품 및 수업</h2>
+        </div>
+        <button type="button" id="closeCartBtn" class="btn-secondary-editorial px-3 py-1.5 text-[11px] uppercase cursor-pointer">
+          닫기
+        </button>
+      </div>
+
+      <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <!-- Cart items rendered here -->
+      </div>
+
+      <div class="p-6 border-t border-hairline bg-surface space-y-4">
+        <div class="flex items-center justify-between text-[14px]">
+          <span class="text-stone">합계 금액</span>
+          <span id="cartTotalPrice" class="text-[18px] font-medium text-kiln">₩ 0</span>
+        </div>
+        <div id="orderNotice" class="hidden bg-mist border border-sea text-sea px-3.5 py-2.5 text-[12px] leading-relaxed"></div>
+        <button type="button" id="checkoutBtn" class="btn-sea-editorial w-full py-3.5 text-[11px] uppercase cursor-pointer">
+          주문 및 문의 접수하기
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Catalog & Interactivity Script -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Catalog data for kinceramics (Hourglass Cups & Ceramic Classes)
+      const CATALOG_ITEMS = [
+        {
+          id: 'hg-cup-ivory',
+          category: 'CUP',
+          badge: 'SIGNATURE',
+          title: '모래시계 컵 — 백토 아이보리',
+          price: 48000,
+          spec: 'Ø 78 × H 104 mm',
+          firing: '1,250°C 산화 소성 · 백토',
+          description: '단정한 허리선과 담백한 백토 빛깔이 어우러진 긴세라믹스의 대표 모래시계 컵입니다.',
+          image: 'https://placehold.co/800x800/F9F9F8/141414?text=HOURGLASS+CUP+%7C+IVORY',
+          fallback: 'https://placehold.co/800x800/F5F5F3/767676?text=kinceramics+Cup'
+        },
+        {
+          id: 'hg-cup-sea',
+          category: 'CUP',
+          badge: 'LIMITED 15',
+          title: '모래시계 컵 — 포항 딥씨 글레이즈',
+          price: 54000,
+          spec: 'Ø 80 × H 106 mm',
+          firing: '1,260°C 환원 소성 · 청자토',
+          description: '포항 앞바다의 깊은 톤을 담은 유약이 가장자리에 은은하게 맺히는 소량 에디션 컵입니다.',
+          image: 'https://placehold.co/800x800/F9F9F8/1E6473?text=HOURGLASS+CUP+%7C+SEA+GLAZE',
+          fallback: 'https://placehold.co/800x800/F5F5F3/767676?text=kinceramics+Sea+Cup'
+        },
+        {
+          id: 'hg-cup-stone',
+          category: 'CUP',
+          badge: 'ARCHIVE',
+          title: '모래시계 컵 — 스톤 매트',
+          price: 52000,
+          spec: 'Ø 76 × H 102 mm',
+          firing: '1,250°C 산화 소성 · 조합토',
+          description: '무광의 차분한 표면 질감으로 따뜻한 차와 커피의 온도를 오래 머금는 기물입니다.',
+          image: 'https://placehold.co/800x800/F9F9F8/767676?text=HOURGLASS+CUP+%7C+STONE+MATTE',
+          fallback: 'https://placehold.co/800x800/F5F5F3/767676?text=kinceramics+Stone+Cup'
+        },
+        {
+          id: 'class-oneday',
+          category: 'CLASS',
+          badge: 'POHANG 1F',
+          title: '도자기 수업 — 모래시계 컵 원데이',
+          price: 65000,
+          spec: '약 2시간 30분 · 1인 2점 제작',
+          firing: '소성 및 포장 포함 (약 3~4주 소요)',
+          description: '흙의 감각을 익히며 나만의 모래시계 컵을 빚어보는 포항 흥해 공방 원데이 클래스입니다.',
+          image: 'https://placehold.co/800x800/F5F5F3/141414?text=CERAMIC+CLASS+%7C+ONE-DAY',
+          fallback: 'https://placehold.co/800x800/F9F9F8/767676?text=kinceramics+One-Day'
+        },
+        {
+          id: 'class-4weeks',
+          category: 'CLASS',
+          badge: 'REGULAR',
+          title: '도자기 수업 — 4주 기초 정규 과정',
+          price: 220000,
+          spec: '주 1회 × 4주 · 회차별 4명 정원',
+          firing: '성형 · 정형 · 시유 · 소성 전 과정',
+          description: '코일링과 물레 기초, 기물의 비례를 살피며 천천히 호흡을 맞추는 4주 도자기 수업입니다.',
+          image: 'https://placehold.co/800x800/F5F5F3/1E6473?text=CERAMIC+CLASS+%7C+4+WEEKS',
+          fallback: 'https://placehold.co/800x800/F9F9F8/767676?text=kinceramics+4-Weeks'
+        },
+        {
+          id: 'hg-pair-set',
+          category: 'CUP',
+          badge: 'PAIR SET',
+          title: '모래시계 컵 페어 세트 (2P)',
+          price: 92000,
+          spec: 'Ø 78 × H 104 mm × 2ea',
+          firing: '1,250°C 산화 소성 · 지관 패키지',
+          description: '두 사람이 나란히 마주 앉아 시간을 나누기 좋은 모래시계 컵 두 점 구성입니다.',
+          image: 'https://placehold.co/800x800/F9F9F8/141414?text=HOURGLASS+CUP+%7C+PAIR+SET',
+          fallback: 'https://placehold.co/800x800/F5F5F3/767676?text=kinceramics+Pair+Set'
+        }
+      ];
+
+      let activeFilter = 'ALL';
+      let cart = [];
+
+      const formatKRW = (amount) => '₩ ' + Number(amount || 0).toLocaleString('ko-KR');
+
+      function renderCatalog() {
+        const grid = document.getElementById('catalogGrid');
+        if (!grid) return;
+
+        const filtered = activeFilter === 'ALL'
+          ? CATALOG_ITEMS
+          : CATALOG_ITEMS.filter((item) => item.category === activeFilter);
+
+        grid.innerHTML = filtered.map((item) => `
+          <article class="artwork-card flex flex-col justify-between border-b border-hairline pb-8">
+            <div>
+              <div class="artwork-frame bg-surface border border-hairline aspect-square overflow-hidden relative">
+                <img
+                  src="${item.image}"
+                  onerror="this.onerror=null;this.src='${item.fallback}';"
+                  alt="${item.title}"
+                  class="w-full h-full object-cover"
+                />
+                <span class="absolute top-3 left-3 bg-canvas border border-hairline px-2.5 py-1 text-[10px] tracking-[0.2em] text-sea uppercase">
+                  ${item.badge}
+                </span>
+              </div>
+
+              <div class="pt-4 space-y-2">
+                <div class="flex items-baseline justify-between gap-3">
+                  <h3 class="text-[18px] font-medium leading-[1.45] tracking-[-0.01em] text-kiln">
+                    ${item.title}
+                  </h3>
+                  <span class="text-[15px] font-normal text-kiln shrink-0">
+                    ${formatKRW(item.price)}
+                  </span>
+                </div>
+
+                <p class="text-[12px] tracking-[0.04em] text-stone">
+                  ${item.spec} · ${item.firing}
+                </p>
+
+                <p class="text-[14px] font-light leading-[1.8] text-stone pt-1">
+                  ${item.description}
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-5 flex items-center gap-2.5">
+              <button
+                type="button"
+                data-add-id="${item.id}"
+                class="add-to-cart-btn btn-secondary-editorial flex-1 py-3 text-[11px] uppercase cursor-pointer"
+              >
+                담기
+              </button>
+              <button
+                type="button"
+                data-buy-id="${item.id}"
+                class="buy-now-btn btn-sea-editorial flex-1 py-3 text-[11px] uppercase cursor-pointer"
+              >
+                ${item.category === 'CLASS' ? '수업 담기' : '바로 선택'}
+              </button>
+            </div>
+          </article>
+        `).join('');
+
+        bindCardActions();
+      }
+
+      function bindCardActions() {
+        document.querySelectorAll('.add-to-cart-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-add-id');
+            addToCart(id, false);
+          });
+        });
+
+        document.querySelectorAll('.buy-now-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-buy-id');
+            addToCart(id, true);
+          });
+        });
+      }
+
+      function addToCart(itemId, openDrawerAfter) {
+        const product = CATALOG_ITEMS.find((p) => p.id === itemId);
+        if (!product) return;
+
+        const existing = cart.find((c) => c.id === itemId);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ ...product, qty: 1 });
+        }
+
+        const orderNotice = document.getElementById('orderNotice');
+        if (orderNotice) {
+          orderNotice.classList.add('hidden');
+          orderNotice.textContent = '';
+        }
+
+        updateCartUI();
+        if (openDrawerAfter) {
+          openCartDrawer();
+        }
+      }
+
+      function updateCartQty(itemId, delta) {
+        const idx = cart.findIndex((c) => c.id === itemId);
+        if (idx === -1) return;
+
+        cart[idx].qty += delta;
+        if (cart[idx].qty <= 0) {
+          cart.splice(idx, 1);
+        }
+        updateCartUI();
+      }
+
+      function updateCartUI() {
+        const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+        const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+        const countDesktop = document.getElementById('cartCountDesktop');
+        const countMobile = document.getElementById('cartCountMobile');
+        const totalEl = document.getElementById('cartTotalPrice');
+        const container = document.getElementById('cartItemsContainer');
+
+        if (countDesktop) countDesktop.textContent = String(totalQty);
+        if (countMobile) countMobile.textContent = String(totalQty);
+        if (totalEl) totalEl.textContent = formatKRW(totalPrice);
+
+        if (!container) return;
+
+        if (cart.length === 0) {
+          container.innerHTML = `
+            <div class="py-16 text-center space-y-2">
+              <p class="text-[14px] text-kiln">아직 담긴 작품이나 수업이 없습니다.</p>
+              <p class="text-[12px] text-stone">모래시계 컵 또는 포항 도자기 수업을 담아보세요.</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = cart.map((item) => `
+          <div class="border border-hairline p-4 bg-surface space-y-3">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h4 class="text-[14px] font-medium text-kiln">${item.title}</h4>
+                <p class="text-[12px] text-stone">${formatKRW(item.price)} · ${item.spec}</p>
+              </div>
+              <span class="text-[14px] font-normal text-kiln">${formatKRW(item.price * item.qty)}</span>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-hairline">
+              <div class="inline-flex items-center border border-hairline bg-canvas">
+                <button type="button" data-qty-id="${item.id}" data-delta="-1" class="qty-btn px-3 py-1 text-[13px] text-kiln cursor-pointer">-</button>
+                <span class="px-3 py-1 text-[12px] text-kiln">${item.qty}</span>
+                <button type="button" data-qty-id="${item.id}" data-delta="1" class="qty-btn px-3 py-1 text-[13px] text-kiln cursor-pointer">+</button>
+              </div>
+              <button type="button" data-qty-id="${item.id}" data-delta="-999" class="qty-btn text-[11px] tracking-[0.14em] text-stone hover:text-kiln uppercase cursor-pointer">
+                삭제
+              </button>
+            </div>
+          </div>
+        `).join('');
+
+        container.querySelectorAll('.qty-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-qty-id');
+            const delta = Number(btn.getAttribute('data-delta'));
+            updateCartQty(id, delta);
+          });
+        });
+      }
+
+      function openCartDrawer() {
+        const backdrop = document.getElementById('cartDrawerBackdrop');
+        if (backdrop) backdrop.classList.remove('hidden');
+      }
+
+      function closeCartDrawer() {
+        const backdrop = document.getElementById('cartDrawerBackdrop');
+        if (backdrop) backdrop.classList.add('hidden');
+      }
+
+      // Filter buttons binding
+      document.querySelectorAll('.filter-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activeFilter = btn.getAttribute('data-filter') || 'ALL';
+          document.querySelectorAll('.filter-btn').forEach((b) => {
+            const isSelected = b.getAttribute('data-filter') === activeFilter;
+            b.className = `filter-btn ${isSelected ? 'btn-primary-editorial' : 'btn-secondary-editorial'} px-4 py-2.5 text-[11px] uppercase cursor-pointer`;
+          });
+          renderCatalog();
+        });
+      });
+
+      // Drawer open/close
+      document.getElementById('openCartBtnDesktop')?.addEventListener('click', openCartDrawer);
+      document.getElementById('openCartBtnMobile')?.addEventListener('click', openCartDrawer);
+      document.getElementById('closeCartBtn')?.addEventListener('click', closeCartDrawer);
+      document.getElementById('cartDrawerBackdrop')?.addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeCartDrawer();
+      });
+
+      // Checkout / inquiry notice inside drawer
+      document.getElementById('checkoutBtn')?.addEventListener('click', () => {
+        const notice = document.getElementById('orderNotice');
+        if (!notice) return;
+        notice.classList.remove('hidden');
+        if (cart.length === 0) {
+          notice.textContent = '먼저 작품이나 도자기 수업을 담아주세요. 문의: 010.3598.3336 / kinceramics111@gmail.com';
+          return;
+        }
+        const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        notice.textContent = `선택하신 ${cart.length}종 (${formatKRW(total)}) 내역이 정리되었습니다. 포항 흥해 긴세라믹스(010.3598.3336 · kinceramics111@gmail.com)로 연락 주시면 결제 및 수령·수업 일정을 안내해 드립니다.`;
+      });
+
+      // Mobile menu toggle
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      const menuIconOpen = document.getElementById('menuIconOpen');
+      const menuIconClose = document.getElementById('menuIconClose');
+
+      mobileMenuToggle?.addEventListener('click', () => {
+        const isHidden = mobileDrawer?.classList.contains('hidden');
+        if (isHidden) {
+          mobileDrawer?.classList.remove('hidden');
+          menuIconOpen?.classList.add('hidden');
+          menuIconClose?.classList.remove('hidden');
+          mobileMenuToggle.setAttribute('aria-expanded', 'true');
+        } else {
+          mobileDrawer?.classList.add('hidden');
+          menuIconOpen?.classList.remove('hidden');
+          menuIconClose?.classList.add('hidden');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileDrawer?.classList.add('hidden');
+          menuIconOpen?.classList.remove('hidden');
+          menuIconClose?.classList.add('hidden');
+          mobileMenuToggle?.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Reservation form handling
+      document.getElementById('reservationForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = (document.getElementById('resName')?.value || '').trim();
+        const date = (document.getElementById('resDate')?.value || '').trim();
+        const program = (document.getElementById('resProgram')?.value || '').trim();
+        const feedback = document.getElementById('reservationFeedback');
+
+        if (feedback) {
+          feedback.classList.remove('hidden');
+          feedback.textContent = `${name || '신청자'}님의 [${program}] 희망일(${date || '미정'}) 예약 요청이 접수되었습니다. 긴세라믹스(010.3598.3336)에서 순차적으로 안내 연락을 드립니다.`;
+        }
+      });
+
+      // Newsletter form handling
+      document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById('newsletterEmail');
+        const msg = document.getElementById('newsletterMsg');
+        if (msg && emailInput) {
+          msg.classList.remove('hidden');
+          msg.textContent = `${emailInput.value} 주소로 소식 안내가 등록되었습니다.`;
+          emailInput.value = '';
+        }
+      });
+
+      // Set current year safely
+      const yearEl = document.getElementById('currentYear');
+      if (yearEl) {
+        yearEl.textContent = String(new Date().getFullYear());
+      }
+
+      // Initial render
+      renderCatalog();
+      updateCartUI();
+    })();
+  </script>
+</body>
+</html>
